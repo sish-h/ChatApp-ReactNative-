@@ -15,6 +15,10 @@ import {
 } from 'react-native';
 
 export default class Home extends Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+
   constructor(props) {
     super(props);
     this.state = {name: ''};
@@ -30,7 +34,8 @@ export default class Home extends Component {
 
   start = () => {
     AsyncStorage.setItem("@ChatStore:username", this.state.name);
-    console.log("TODO: open chat screen");
+    const { navigate } = this.props.navigation;
+    navigate('Chat', {username: this.state.name});
   }
 
   render() {
