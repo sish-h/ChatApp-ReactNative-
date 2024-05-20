@@ -6,22 +6,31 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   TextInput,
-  Button
+  Button,
+  AsyncStorage
 } from 'react-native';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {name: ''};
+    this.loadUsername();
+  }
+
+  async loadUsername() {
+    const username = await AsyncStorage.getItem("@ChatStore:username");
+    this.setState({
+      name: username
+    });
   }
 
   start = () => {
-
+    AsyncStorage.setItem("@ChatStore:username", this.state.name);
+    console.log("TODO: open chat screen");
   }
 
   render() {

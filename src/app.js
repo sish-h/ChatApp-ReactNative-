@@ -4,14 +4,8 @@
  * @flow
  */
 
-import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button
 } from 'react-native';
 
 import Home from './home';
